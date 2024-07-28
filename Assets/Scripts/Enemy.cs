@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
         EnemyMovement();
     }
     
-    void OnTriggerEnter(Collider other){ // toplanları silme kodu
+    void OnTriggerEnter(Collider other){ // toplanları silme
         foreach (Transform child in other.transform){
             foreach (Transform grandChild in child){
                 Destroy(grandChild.gameObject);
