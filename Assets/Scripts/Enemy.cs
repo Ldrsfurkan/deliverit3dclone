@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public PlayerController playerController;
-    private float speed = 3.0f;
+    private float speed = 5.0f;
     private float distance = 6.0f;
     private bool isMoving = true;
     private Vector3 startPos;
@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         startPos = transform.position;
-        playerController =  GameObject.Find("Player").GetComponent<PlayerController>();
+       
     }
  
     void Update()

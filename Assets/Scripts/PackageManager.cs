@@ -20,7 +20,7 @@ public class PackageManager : MonoBehaviour
     {
         
     }
-    public void ChangeColor(Color _color)
+    public void ChangeColor(Color _color) //calismiyo
     {   
         var packageRenderer = package.GetComponent<Renderer>();
         packageRenderer.sharedMaterial.SetColor("_Color", _color);
