@@ -34,7 +34,8 @@ public class PlayerController : MonoBehaviour
         {          
             other.transform.SetParent(parentObject.transform);           
             other.transform.localPosition = new Vector3(0, collectedCount * yOffset, 0);                    
-            collectedCount++;   
+            collectedCount++;  
+            other.tag ="Collected";     
         }
     }
     

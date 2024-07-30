@@ -5,8 +5,8 @@ using UnityEngine;
 public class Finish : MonoBehaviour
 {   
     public GameObject packages;  
-    //public Package PackageScript;
-    public PlayerController PlayerScript;
+    public PackageManager packageManager;
+    public PlayerController playerScript;
     void Start()
     {
         
@@ -19,7 +19,7 @@ public class Finish : MonoBehaviour
     }
      void OnTriggerEnter(Collider other)
     {
-        //PackageScript.Deliver();
-        PlayerScript.isGameEnd = true;
+        packageManager.Deliver();
+        playerScript.isGameEnd = true;
     }
 }   

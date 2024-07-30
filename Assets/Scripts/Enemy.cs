@@ -32,13 +32,13 @@ public class Enemy : MonoBehaviour
     }
     void EnemyMovement(){
         if(isMoving){
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
                 if(Vector3.Distance(startPos,transform.position) >= distance){
                     isMoving = false;
         }
         }
         else{
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            transform.Translate(Vector3.back * speed * Time.deltaTime);
                 if(Vector3.Distance(startPos, transform.position) >= distance){
                     isMoving=true;
             }
