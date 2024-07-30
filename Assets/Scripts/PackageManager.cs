@@ -6,8 +6,8 @@ public class PackageManager : MonoBehaviour
 {
     public GameObject package;
     public Package packageSc;
-    int xOffset = 1;
-    int zOffset = 2;
+    int zOffset = 1;
+    int xOffset = 2;
     
 
     void Start()
@@ -52,22 +52,22 @@ public class PackageManager : MonoBehaviour
         
         for(int i = 0; i<=10; i++)
         {
-            zOffset += i;
+            xOffset += i;
             if( i%2 == 0)
             {
                 SetTypeValue(2);
-                Instantiate(package,new Vector3(zOffset,1,xOffset),package.transform.rotation);
+                Instantiate(package,new Vector3(xOffset,1,zOffset),package.transform.rotation);
             }
             else if(i%3 == 0)
             {
                 SetTypeValue(3);
-                xOffset = -1;
-                Instantiate(package,new Vector3(zOffset,1,xOffset),package.transform.rotation);
+                zOffset = -1;
+                Instantiate(package,new Vector3(xOffset,1,zOffset),package.transform.rotation);
             }
             else
             {
                 SetTypeValue(1);
-                Instantiate(package,new Vector3(zOffset,1,xOffset),package.transform.rotation);
+                Instantiate(package,new Vector3(xOffset,1,zOffset),package.transform.rotation);
             }
 
         }
