@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public int yOffset = 1;
     public int collectedCount = 0;
     public float speed = 20.0f;
+    public bool isGameEnd = false;
     
     void Start()
     {
@@ -20,8 +21,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Movement(){
+        if(!isGameEnd)
+        {
          if(Input.GetKey(KeyCode.Space)){
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
         }
     }
     void OnTriggerEnter(Collider other)
