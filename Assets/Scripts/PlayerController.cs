@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 20.0f;
     public bool isGameEnd = false;
     public Package packageSc;
+    public int totalMoney;
     
     void Start()
     {
@@ -34,7 +35,8 @@ public class PlayerController : MonoBehaviour
             other.transform.SetParent(parentObject.transform);           
             other.transform.localPosition = new Vector3(0, collectedCount, 0);                    
             collectedCount++;  
-            other.tag ="Collected";     
+            totalMoney += packageSc.money;
+            
         }
     }
     

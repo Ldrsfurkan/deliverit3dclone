@@ -25,7 +25,8 @@ public class Enemy : MonoBehaviour
         foreach (Transform child in other.transform){
             foreach (Transform grandChild in child){
                 Destroy(grandChild.gameObject);
-                playerController.collectedCount = 0;          
+                playerController.collectedCount = 0; 
+                playerController.totalMoney = 0 ;         
             }
         }
 

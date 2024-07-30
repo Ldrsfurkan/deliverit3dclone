@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {   
-    public GameObject packages;  
     public PackageManager packageManager;
-    public PlayerController playerScript;
+    public PlayerController playerSc;
     void Start()
     {
         
@@ -20,6 +19,7 @@ public class Finish : MonoBehaviour
      void OnTriggerEnter(Collider other)
     {
         packageManager.Deliver();
-        playerScript.isGameEnd = true;
+        playerSc.isGameEnd = true;
+        Debug.Log(playerSc.totalMoney);
     }
 }   
