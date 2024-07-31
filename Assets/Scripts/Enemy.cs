@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     
     void Start()
     {
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         startPos = transform.position;
        
     }
