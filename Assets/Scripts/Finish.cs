@@ -9,6 +9,8 @@ public class Finish : MonoBehaviour
     void Start()
     {
         
+        playerSc= GameObject.Find("Player").GetComponent<PlayerController>();
+        packageManager= GameObject.Find("Package Manager").GetComponent<PackageManager>();
     }
 
     

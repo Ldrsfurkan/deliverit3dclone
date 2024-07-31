@@ -17,7 +17,7 @@ public class PackageManager : MonoBehaviour
 
     void Start()
     {  
-        CreatePackages();
+        CreateScene();
         //CreateEnemy();
     }
 
@@ -51,9 +51,8 @@ public class PackageManager : MonoBehaviour
             ChangeColor(Color.magenta);
         }
     }
-    public void CreatePackages()
-    {
-        
+    public void CreateScene()
+    {      
         for(int i = 0; i<=packageCount; i++) 
         {
             xOffset += i;
