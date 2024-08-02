@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,48 +9,51 @@ public class PackageManager : MonoBehaviour
     public GameObject enemy;
     public GameObject finishLine;
     public GameObject plane;
-    public Package packageSc;
+    public GameObject collectedPackagesParent;
     Vector3 lastPackagePosition;
     int zOffset = 1;
     int xOffset = 2;
     public int packageCount;
-    
+
+    public static PackageManager instance;
 
     void Start()
     {  
-        CreateScene();
+        //CreateScene();
         //CreateEnemy();
+    }
+
+    private void Awake()
+    {
+        CreateInstance();
+    }
+
+    void CreateInstance()
+    {
+        if (!instance)
+        {
+            instance = this;
+        } else if (instance != this)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     void Update()
     {
         
     }
-    public void ChangeColor(Color _color) //calismiyo
-    {   
-        var packageRenderer = package.GetComponent<Renderer>();
-        packageRenderer.sharedMaterial.SetColor("_Color", _color);
-    }
+
     public void Deliver()
     {
-        ChangeColor(Color.green);
+        foreach (Transform package in collectedPackagesParent.transform)
+        {
+            package.GetComponent<Package>().Deliver();
+        }
     }
     public void SetTypeValue(int packageType)
     {
-        if(packageType == 1)
-        {
-            packageSc.money = 100;
-            ChangeColor(Color.green);
-        }
-        if(packageType == 2){
-            packageSc.money = 200;
-            ChangeColor(Color.yellow);
-        }
-        if(packageType == 3)
-        {
-            packageSc.money = 300;
-            ChangeColor(Color.magenta);
-        }
+
     }
     public void CreateScene()
     {      
