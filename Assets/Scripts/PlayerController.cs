@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
         collectedCount = 0;
         totalMoney =0;
         gameObject.transform.position = new Vector3(-1,0,0);
+        Debug.Log(LevelManager.instance.levelID);
     }
         
 }
