@@ -86,10 +86,14 @@ public class LevelManager : MonoBehaviour
 
         foreach (GameObject obj in allObj)
         {
-            if(obj.CompareTag("Collectable") || obj.CompareTag("Enemy") || obj.CompareTag("Finish"))
+            if(obj.CompareTag("Collectable")  || obj.CompareTag("Finish"))
             {
                 Destroy(obj);
-            }     
+            }  
+            if(obj.CompareTag("Enemy"))
+            {
+                obj.SetActive(false);
+            }   
         }
         step = 0;
         levelID++;

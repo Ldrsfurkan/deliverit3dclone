@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
         LevelManager.instance.newLevel();
         collectedCount = 0;
         totalMoney = 0;
+        isDamaged = false;
         gameObject.transform.position = new Vector3(-1,0,0); 
     }
         

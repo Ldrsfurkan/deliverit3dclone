@@ -4,11 +4,10 @@ using UnityEngine;
 using DG.Tweening;
 public class Enemy : MonoBehaviour
 {
-    public float speed = 4.0f;
-
     void Start()
     { 
-        transform.DOMoveX(12,speed).SetLoops(100,LoopType.Yoyo);
+        float speed = Random.Range(1,4);
+        transform.DOMoveX(12,speed).SetLoops(-1,LoopType.Yoyo);
     }
 
 }
