@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
+
     public GameObject parentObject;  
     public int collectedCount = 0;
     public float speed = 20.0f;
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Movement(){
-        if(!isGameEnd)
+        if(!isGameEnd && !isDead)
         { 
             if(Input.GetKey(KeyCode.Space))
             { 
@@ -101,12 +101,17 @@ public class PlayerController : MonoBehaviour
             if (!isGameEnd && !isDead)
             {
                 PackageManager.instance.Deliver();
-                isGameEnd = true;
                 Debug.Log(totalMoney);
+                newLevelStart();
             }
         }
     }
-    
-    
-    
+    void newLevelStart()
+    {
+        LevelManager.instance.newLevel();
+        collectedCount = 0;
+        totalMoney =0;
+        gameObject.transform.position = new Vector3(-1,0,0);
+    }
+        
 }
