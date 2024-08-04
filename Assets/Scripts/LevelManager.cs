@@ -29,10 +29,9 @@ public class LevelManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    
     void Start()
     {
-        //var newLevel = new List<int>();
+        
         // 0-bosluk, 1-package, 2-enemy, 3-finish
         //levels = new List<int>()
         levels = new List<List<int>>()
@@ -41,14 +40,20 @@ public class LevelManager : MonoBehaviour
             new List<int>() {1,1,1,2,1,0,2,1,1,1,3},
             new List<int>() {1,1,1,2,1,2,1,2,1,1,1,3},
             new List<int>() {1,1,1,2,1,2,1,2,1,1,1,1,2,1,2,1,3},
-            new List<int>() {1,2,1,2,1,2,1,2,1,1,1,1,1,1,2,3}
+            new List<int>() {1,2,1,2,1,2,1,2,1,1,1,1,1,1,2,3},
+            new List<int>() {1,2,1,2,1,1,1,2,1,1,1,1,1,1,1,1,2,1,2,3}
         };
         
         CreateLevel();
     }
+    void Update()
+    {
+        RestartLevelID();
+    }
 
     public void CreateLevel()
     {
+        levelID = PlayerPrefs.GetInt("levelID", levelID);
         foreach (var l in levels[levelID])
         {
             if (l == 0)
@@ -88,8 +93,15 @@ public class LevelManager : MonoBehaviour
         }
         step = 0;
         levelID++;
+        PlayerPrefs.SetInt("levelID",levelID);
         CreateLevel();
-
+    }
+    public void RestartLevelID()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerPrefs.SetInt("levelID", 0);
+        }
     }
     
 }

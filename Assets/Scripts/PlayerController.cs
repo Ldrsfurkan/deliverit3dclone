@@ -102,17 +102,16 @@ public class PlayerController : MonoBehaviour
             {
                 PackageManager.instance.Deliver();
                 Debug.Log(totalMoney);
-                newLevelStart();
+                NewLevelStart();
             }
         }
     }
-    void newLevelStart()
+    public void NewLevelStart()
     {
         LevelManager.instance.newLevel();
         collectedCount = 0;
-        totalMoney =0;
-        gameObject.transform.position = new Vector3(-1,0,0);
-        Debug.Log(LevelManager.instance.levelID);
+        totalMoney = 0;
+        gameObject.transform.position = new Vector3(-1,0,0); 
     }
         
 }
