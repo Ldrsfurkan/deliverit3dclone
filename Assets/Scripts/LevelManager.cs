@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
         levels = new List<int>()
         {
             1,1,1,1,1,2,1,1,1,1,1,3
+
         };
         
         CreateLevel();
@@ -44,7 +45,7 @@ public class LevelManager : MonoBehaviour
             else if(l == 2)
             {
                 var newEnemy = Instantiate(enemyPrefab);
-                newEnemy.transform.position = new Vector3(0, 0, gap * step);
+                newEnemy.transform.position = new Vector3(-7, 0, gap * step);
             }
 
             else

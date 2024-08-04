@@ -1,44 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class Enemy : MonoBehaviour
 {
-    private float speed = 5.0f;
-    private float distance = 6.0f;
-    private bool isMoving = true;
-    private Vector3 startPos;
-    
+    private float speed = 4.0f;
+
     void Start()
-    {
-        startPos = transform.position;
-       
+    { 
+        transform.DOMoveX(12,speed).SetLoops(100,LoopType.Yoyo);
     }
  
     void Update()
     {
-        EnemyMovement();
+     
     }
     
-    void EnemyMovement()
-    {
-        if(isMoving)
-        {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
-            if(Vector3.Distance(startPos,transform.position) >= distance)
-            {
-                    isMoving = false;
-            }
-        }
-        
-        else
-        {
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
-            if(Vector3.Distance(startPos, transform.position) >= distance)
-            { 
-                isMoving=true;
-            }
-        }
-    }
-
 }
