@@ -24,9 +24,6 @@ public class Package : MonoBehaviour
         GetComponent<MeshRenderer>().material.color = Color.green;
         Destroy(gameObject,0.5f);
     }
-
-
-
     
     void Update()
     {

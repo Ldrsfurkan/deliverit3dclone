@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,7 +27,8 @@ public class PlayerController : MonoBehaviour
         if (!instance)
         {
             instance = this;
-        } else if (instance != this)
+        } 
+        else if (instance != this)
         {
             Destroy(this.gameObject);
         }
@@ -44,7 +46,8 @@ public class PlayerController : MonoBehaviour
     void Movement(){
         if(!isGameEnd)
         { 
-            if(Input.GetKey(KeyCode.Space)){ 
+            if(Input.GetKey(KeyCode.Space))
+            { 
                 transform.Translate(Vector3.forward * speed * Time.deltaTime);
             }
         }
@@ -63,15 +66,13 @@ public class PlayerController : MonoBehaviour
                 totalMoney = 0;
             }
         }
-
         else
         {
             if (!isDead)
             {
                 isDead = true;
                 Debug.Log(isDead);
-            }
-            
+            } 
         }
     }
     
@@ -85,7 +86,6 @@ public class PlayerController : MonoBehaviour
                 other.transform.SetParent(parentObject.transform);           
                 other.transform.localPosition = new Vector3(0, collectedCount, 0);                    
                 collectedCount++;
-            
                 totalMoney += pack.money;
                 pack.Collect();
             }
@@ -101,6 +101,8 @@ public class PlayerController : MonoBehaviour
             if (!isGameEnd && !isDead)
             {
                 PackageManager.instance.Deliver();
+                isGameEnd = true;
+                Debug.Log(totalMoney);
             }
         }
     }
