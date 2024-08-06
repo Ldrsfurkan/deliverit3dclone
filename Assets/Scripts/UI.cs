@@ -10,6 +10,7 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI gameNameText;
     public Button startButton;
+    public GameObject startImage;
     bool gameActive = false;
     private static UI instance;
 
@@ -27,6 +28,7 @@ public class UI : MonoBehaviour
     {
         PlayerController.instance.isGameEnd = true;
         gameNameText.text = "Deliver it 3d Clone";
+        startImage.SetActive(true);
     }
     void Update()
     {
@@ -45,6 +47,7 @@ public class UI : MonoBehaviour
     }
     public void StartGame()
     {
+    startImage.SetActive(false);
     PlayerController.instance.isGameEnd = false;
     gameActive = true;
     startButton.gameObject.SetActive(false);
