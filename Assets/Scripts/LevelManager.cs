@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -31,9 +33,7 @@ public class LevelManager : MonoBehaviour
     }
     void Start()
     {
-        
         // 0-bosluk, 1-package, 2-enemy, 3-finish
-        //levels = new List<int>()
         levels = new List<List<int>>()
         {
             new List<int>() {1,1,1,1,1,2,1,1,1,1,1,3},
@@ -43,17 +43,16 @@ public class LevelManager : MonoBehaviour
             new List<int>() {1,2,1,2,1,2,1,2,1,1,1,1,1,1,2,3},
             new List<int>() {1,2,1,2,1,1,1,2,1,1,1,1,1,1,1,1,2,1,2,3}
         };
-        
-        CreateLevel();
+        levelID = PlayerPrefs.GetInt("levelID", levelID);
+        CreateLevel(levelID);
     }
     void Update()
     {
         RestartLevelID();
     }
 
-    public void CreateLevel()
+    public void CreateLevel(int levelID)
     {
-        levelID = PlayerPrefs.GetInt("levelID", levelID);
         foreach (var l in levels[levelID])
         {
             if (l == 0)
@@ -80,25 +79,12 @@ public class LevelManager : MonoBehaviour
             step++;
         }
     }
-    public void newLevel()
+    public void NewLevel()
     {
-        GameObject[] allObj = FindObjectsOfType<GameObject>();
-
-        foreach (GameObject obj in allObj)
-        {
-            if(obj.CompareTag("Collectable")  || obj.CompareTag("Finish"))
-            {
-                Destroy(obj);
-            }  
-            if(obj.CompareTag("Enemy"))
-            {
-                obj.SetActive(false);
-            }   
-        }
         step = 0;
         levelID++;
         PlayerPrefs.SetInt("levelID",levelID);
-        CreateLevel();
+        SceneManager.LoadScene("asd");
     }
     public void RestartLevelID()
     {

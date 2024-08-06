@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
     }
     public void NewLevelStart()
     {
-        LevelManager.instance.newLevel();
+        LevelManager.instance.NewLevel();
         collectedCount = 0;
         totalMoney = 0;
         isDamaged = false;
