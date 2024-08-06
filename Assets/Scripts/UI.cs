@@ -11,8 +11,19 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI gameNameText;
     public Button startButton;
     bool gameActive = false;
-    
-    void Start()
+    private static UI instance;
+
+     void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }  
+      void Start()
     {
         PlayerController.instance.isGameEnd = true;
         gameNameText.text = "Deliver it 3d Clone";
