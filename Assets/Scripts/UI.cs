@@ -2,21 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI levelText;
-    // Start is called before the first frame update
+    public TextMeshProUGUI gameNameText;
+    public Button startButton;
+    bool gameActive = false;
+    
     void Start()
     {
-        
+        PlayerController.instance.isGameEnd = true;
+        gameNameText.text = "Deliver it 3d Clone";
     }
-
-    // Update is called once per frame
     void Update()
     {
+        GamePage();
+    }
+    void GamePage()
+    {
+        if(gameActive == true)
+        {   
+        gameNameText.gameObject.SetActive(false);
+        coinText.gameObject.SetActive(true);
         coinText.text = "Coins: " + PlayerController.instance.totalMoney;
+        levelText.gameObject.SetActive(true);
         levelText.text = "" + (LevelManager.instance.levelID+1) ;
+        }
+    }
+    public void StartGame()
+    {
+    PlayerController.instance.isGameEnd = false;
+    gameActive = true;
+    startButton.gameObject.SetActive(false);
     }
 }
