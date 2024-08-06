@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -61,7 +62,8 @@ public class PlayerController : MonoBehaviour
 
             foreach (Transform child in parentObject.transform)
             {
-                Destroy(child.gameObject, Random.Range(0.1f,0.5f));
+                child.gameObject.transform.DOLocalMove(new Vector3(Random.Range(-6,6),1,Random.Range(-6,6)), 0.5f);
+                Destroy(child.gameObject, Random.Range(0.1f,1.5f));
                 collectedCount = 0;
                 totalMoney = 0;
             }
@@ -83,8 +85,9 @@ public class PlayerController : MonoBehaviour
             var pack = other.GetComponent<Package>();
             if (!pack.isCollected)
             {
-                other.transform.SetParent(parentObject.transform);           
-                other.transform.localPosition = new Vector3(0, collectedCount, 0);                    
+                other.transform.SetParent(parentObject.transform);
+                other.transform.DOLocalJump(new Vector3(0, collectedCount, 0),0.5f,1,0.3f);        
+                //other.transform.localPosition = new Vector3(0, collectedCount, 0);                    
                 collectedCount++;
                 totalMoney += pack.money;
                 pack.Collect();
