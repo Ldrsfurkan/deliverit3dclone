@@ -534,7 +534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &348736223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1480,6 +1480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelID: 0
+  step: 1
   gap: 10
   packagePrefab: {fileID: 8726530244519561625, guid: 46fdeca437a29405ea7adeab4b79aec5, type: 3}
   enemyPrefab: {fileID: 5082063694621720358, guid: 338f581cba372b748be4fd435330bf5a, type: 3}
@@ -2148,7 +2149,7 @@ MonoBehaviour:
   - {fileID: 1949835632}
   - {fileID: 530291227}
   parentObject: {fileID: 791332853}
-  pathId: 2
+  pathId: 0
   collectedCount: 0
   speed: 20
   isGameEnd: 0
