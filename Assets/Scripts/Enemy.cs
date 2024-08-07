@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     void Start()
     { 
         float speed = Random.Range(1,4);
-        transform.DOMoveX(12,speed).SetLoops(-1,LoopType.Yoyo);
+        transform.DOMoveZ(12,speed).SetLoops(-1,LoopType.Yoyo);
     }
 
 }

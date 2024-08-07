@@ -43,7 +43,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
          parentObject.transform.localPosition = new Vector3 (0,0,-1);
-         PathCreate();
+         PathCreate();;
+          // Path noktalarını LevelManager'a ilet
+          pathId = Random.Range(0, paths.Length);
+         LevelManager.instance.SetPaths(paths,pathId);
     }
     void Update()
     {
@@ -54,9 +57,9 @@ public class PlayerController : MonoBehaviour
     {
         if(!isGameEnd && !isDead)
         { 
-             if (Input.GetKey(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Space))
         {
-            if (!isMoving)
+            if(!isMoving)
             {
                 isMoving = true;
                 MoveToNextPoint();
@@ -67,6 +70,7 @@ public class PlayerController : MonoBehaviour
             isMoving = false;
             transform.DOKill(); // Hareketi durdur
         }
+
         }
     }
      private void MoveToNextPoint()
@@ -85,6 +89,7 @@ public class PlayerController : MonoBehaviour
                     MoveToNextPoint();
                 }
             });
+            transform.DOLookAt(nextPoint, duration);
         }
     }
 void PathCreate()
