@@ -111,7 +111,8 @@ void PathCreate()
             foreach (Transform child in parentObject.transform)
             {
                 child.gameObject.transform.DOLocalMove(new Vector3(Random.Range(-6,6),1,Random.Range(-6,6)), 0.5f);
-                Destroy(child.gameObject, Random.Range(0.1f,1.5f));
+                child.gameObject.SetActive(false);
+                //Destroy(child.gameObject, Random.Range(0.1f,1.5f));
                 collectedCount = 0;
                 totalMoney = 0;
             }
